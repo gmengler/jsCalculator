@@ -1,0 +1,65 @@
+table {
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input {
+    border: 2px solid rgb(94, 94, 94);
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#input {
+    width: 100%;
+    text-align: center;
+}
+
+.num {
+    background-color: #8e8e8e;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.oper {
+  background-color: #4d4d4d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  width: 100px;
+}
+
+.sumClass {
+  background-color: #4d4d4d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  width: 100px;
+}

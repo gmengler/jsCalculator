@@ -2,9 +2,6 @@ var main = function() {
     view();
 }
 
-var chars = [];
-
-
 var view = function() {
     var $table = $('<table>');
 
@@ -43,6 +40,14 @@ var view = function() {
     $td10.append($button10);
     $tr1.append($td10);
 
+    var $td11 = $('<td>');
+    $td11.addClass('operator');
+    var $button11 = $('<button>-</button>');
+    $button11.addClass('oper');
+    $button11.attr('value', '-');
+    $td11.append($button11);
+    $tr1.append($td11);
+
     $table.append($tr1);
 
     var $tr2 = $('<tr>');
@@ -71,13 +76,21 @@ var view = function() {
     $td5.append($button5);
     $tr2.append($td5);
 
-    var $td11 = $('<td>');
-    $td11.addClass('operator');
-    var $button11 = $('<button>-</button>');
-    $button11.addClass('oper');
-    $button11.attr('value', '-');
-    $td11.append($button11);
-    $tr2.append($td11);
+    var $td12 = $('<td>');
+    $td12.addClass('operator');
+    var $button12 = $('<button>/</button>');
+    $button12.addClass('oper');
+    $button12.attr('value', '/');
+    $td12.append($button12);
+    $tr2.append($td12);
+
+    var $td13 = $('<td>');
+    $td13.addClass('operator');
+    var $button13 = $('<button>*</button>');
+    $button13.addClass('oper');
+    $button13.attr('value', '*');
+    $td13.append($button13);
+    $tr2.append($td13);
 
     $table.append($tr2);
 
@@ -107,16 +120,14 @@ var view = function() {
     $td8.append($button8);
     $tr3.append($td8);
 
-    var $td12 = $('<td>');
-    $td12.addClass('operator');
-    var $button12 = $('<button>/</button>');
-    $button12.addClass('oper');
-    $button12.attr('value', '/');
-    $td12.append($button12);
-    $tr3.append($td12);
+    var $td14 = $('<td>');
+    $td14.attr('id', 'sum');
+    var $button14 = $('<button>Sum</button>');
+    $button14.addClass('sumClass');
+    $td14.append($button14);
+    $tr3.append($td14);
 
     $table.append($tr3);
-
 
     var $tr4 = $('<tr>');
 
@@ -132,20 +143,18 @@ var view = function() {
     $tr4.append($td9);
 
     var $td10 = $('<td>');
-    // $td10.addClass('number');
     var $button10 = $('<button>.</button>');
     $button10.addClass('num');
     $button10.attr('value', '.');
     $td10.append($button10);
     $tr4.append($td10);
 
-    var $td13 = $('<td>');
-    $td13.addClass('operator');
-    var $button13 = $('<button>*</button>');
-    $button13.addClass('oper');
-    $button13.attr('value', '*');
-    $td13.append($button13);
-    $tr4.append($td13);
+    var $td15 = $('<td>');
+    $td15.attr('id', 'clear');
+    var $button15 = $('<button>Clear</button>');
+    $button15.addClass('oper');
+    $td15.append($button15);
+    $tr4.append($td15);
 
     $table.append($tr4);
 
@@ -155,29 +164,28 @@ var view = function() {
 
     var $tr5 = $('<tr>');
 
-    var $td14 = $('<td>');
-    $td14.attr('id', 'sum');
-    var $button14 = $('<button>Sum</button>');
-    $button14.attr('value', '=');
-    $td14.append($button14);
-    $tr5.append($td14);
+    var $td = $('<td>');
+    $tr5.append($td);
+    var $td = $('<td>');
+    $tr5.append($td);
+    var $td = $('<td>');
+    $tr5.append($td);
 
-    $tr5.append($td14);
-    var $td15 = $('<td>');
-    $td15.attr('id', 'clear');
-    var $button15 = $('<button>Clear</button>');
-    $button15.addClass('oper');
-    $td15.append($button15);
-    $tr5.append($td15);
+    var $tr6 = $('<tr>');
 
-    var $td16 = $('<td>');
-    $td16.attr('id', 'display');
-    $tr5.append($td16);
-    $table.append($tr5);
+    var $td = $('<td>');
+    $tr6.append($td);
+    var $td = $('<td>');
+    $tr6.append($td);
+    var $td = $('<td>');
+    $tr6.append($td);
+
+    $table.append($tr6);
 
     $('body').append($table);
 
     var $div = $('<div>');
+    $div.attr('id', 'input');
     $('body').append($div);
 
     var $input = $('<input>');
@@ -187,48 +195,49 @@ var view = function() {
     var num1 = '';
     var num2 = '';
     var opr = '';
-    // $('button').click(function() {
-    //     chars.push($(this).attr('value'));
-    //     $input.attr('value', $input.val() + $(this).val());
-    // });
+    var total = '';
+
     $('.num').click(function() {
-        $input.attr('value', $input.val() + $(this).val());
+        console.log(total === '');
+        if (total === '') {
+            $input.attr('value', $input.val() + $(this).val());
+        } else {
+            $input.attr('value', '' + $(this).val());
+            total = '';
+        }
     });
+
     $('.oper').click(function() {
         num1 = $input.val();
         opr = $(this).val();
-        console.log(num1);
-        console.log(opr);
         $input.attr('value', '');
     });
 
     $('#clear').click(function() {
-        chars.splice(0, chars.length)
         $input.attr('value', '');
     });
     $('#sum').click(function() {
-        var total = 0;
-        num2 = $input.val();
-        console.log(opr);
-        if (opr === '+') {
-            total = parseFloat(num1) + parseFloat(num2);
-            $input.attr('value', total);
-        } else if (opr === '-') {
-            total = num1 - num2;
-            $input.attr('value', total);
+        if (num1 !== '' && opr !== '' && $input.val() !== '') {
 
-        } else if (opr === '*') {
-            total = num1 * num2;
-            $input.attr('value', total);
+            num2 = $input.val();
+            if (opr === '+') {
+                total = parseFloat(num1) + parseFloat(num2);
+                $input.attr('value', total);
+            } else if (opr === '-') {
+                total = num1 - num2;
+                $input.attr('value', total);
 
-        } else if (opr === '/') {
-            total = num1 / num2;
-            $input.attr('value', total);
+            } else if (opr === '*') {
+                total = num1 * num2;
+                $input.attr('value', total);
 
+            } else if (opr === '/') {
+                total = num1 / num2;
+                $input.attr('value', total);
+            }
         }
     });
 }
-
 
 var assignListenersByClass = function(e, c, n) {
     $(n).each(function() {
